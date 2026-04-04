@@ -192,6 +192,67 @@
             color: #666;
         }
 
+        /* Beta Form Styles */
+        .beta-form {
+            max-width: 500px;
+            margin: 30px auto 0;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .beta-form input {
+            padding: 15px 20px;
+            font-size: 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 50px;
+            outline: none;
+            transition: border-color 0.3s;
+            font-family: inherit;
+        }
+
+        .beta-form input:focus {
+            border-color: #667eea;
+        }
+
+        .beta-form button {
+            padding: 15px 20px;
+            font-size: 18px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .beta-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .form-message {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 10px;
+            display: none;
+        }
+
+        .form-message.success {
+            display: block;
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .form-message.error {
+            display: block;
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
         /* Footer */
         .footer {
             background: #2d3748;
@@ -229,6 +290,10 @@
             .section-title {
                 font-size: 28px;
             }
+
+            .beta-form {
+                padding: 0 20px;
+            }
         }
     </style>
 </head>
@@ -240,7 +305,7 @@
                 <div class="nav-links">
                     <a href="#features">Возможности</a>
                     <a href="#how-it-works">Как работает</a>
-                    <a href="#download">Скачать</a>
+                    <a href="#beta">Бета-тест</a>
                 </div>
             </nav>
         </div>
@@ -251,7 +316,7 @@
             <div class="container">
                 <h1>Учите языки с GoWords</h1>
                 <p>Эффективный метод обучения через карточки с интервальными повторениями</p>
-                <a href="#download" class="cta-button">Начать учиться →</a>
+                <a href="#beta" class="cta-button">Записаться в бета-тест →</a>
             </div>
         </section>
 
@@ -262,6 +327,7 @@
                     <div class="feature-card">
                         <div class="feature-icon">📱</div>
                         <h3>Удобный интерфейс</h3>
+                        <p>Интуитивно понятное приложение, которое делает обучение приятным и эффективным</h3>
                         <p>Интуитивно понятное приложение, которое делает обучение приятным и эффективным</p>
                     </div>
                     <div class="feature-card">
@@ -284,34 +350,42 @@
                 <div class="steps">
                     <div class="step">
                         <div class="step-number">1</div>
-                        <h3>Создайте колоду</h3>
-                        <p>Добавляйте слова и фразы, которые хотите выучить</p>
+                        <h3>Выберите тему</h3>
+                        <p>Выберите интересующую тему из списка: путешествия, еда, бизнес и другие</p>
                     </div>
                     <div class="step">
                         <div class="step-number">2</div>
+                        <h3>Изучайте колоду</h3>
+                        <p>Получите готовую колоду слов по выбранной теме и начните заниматься</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
                         <h3>Переворачивайте карточки</h3>
                         <p>Пытайтесь вспомнить перевод, затем проверяйте себя</p>
                     </div>
                     <div class="step">
-                        <div class="step-number">3</div>
+                        <div class="step-number">4</div>
                         <h3>Повторяйте регулярно</h3>
                         <p>Алгоритм подскажет, когда повторять каждое слово</p>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">4</div>
-                        <h3>Достигайте целей</h3>
-                        <p>Наблюдайте за своим прогрессом и расширяйте словарный запас</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="download" class="cta-section">
+        <section id="beta" class="cta-section">
             <div class="container">
-                <h2>Готовы начать?</h2>
-                <p>Присоединяйтесь к тысячам студентов, которые уже учат языки с GoWords</p>
-                <a href="#" class="cta-button" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">Скоро в App Store</a>
-                <p style="margin-top: 20px; font-size: 14px;">Подпишитесь, чтобы узнать о запуске первыми</p>
+                <h2>Станьте бета-тестером</h2>
+                <p>Приложение скоро запустится. Оставьте email, чтобы получить приглашение первыми</p>
+                
+                <!-- РАБОЧАЯ ФОРМА ДЛЯ СБОРА EMAIL -->
+                <form id="betaForm" class="beta-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                    <input type="email" name="email" placeholder="Ваш email" required>
+                    <input type="hidden" name="_subject" value="Новая заявка на бета-тест GoWords">
+                    <input type="hidden" name="_replyto" value="">
+                    <button type="submit">Записаться в бета-тест</button>
+                </form>
+                <div id="formMessage" class="form-message"></div>
+                <p style="margin-top: 20px; font-size: 14px; color: #999;">Мы не спамим и не передаём данные третьим лицам</p>
             </div>
         </section>
     </main>
@@ -322,5 +396,60 @@
             <p style="margin-top: 10px; opacity: 0.8;">GoWords - учите языки с удовольствием</p>
         </div>
     </footer>
+
+    <script>
+        // Скрипт для отправки формы без перезагрузки страницы (AJAX)
+        const form = document.getElementById('betaForm');
+        const messageDiv = document.getElementById('formMessage');
+
+        // ЗАМЕНИТЕ ЭТУ ССЫЛКУ НА ВАШУ ОТ FORMSPREE
+        // 1. Перейдите на https://formspree.io/
+        // 2. Зарегистрируйтесь
+        // 3. Создайте новый проект и получите ID формы (вида xeqkrnje)
+        // 4. Вставьте ссылку ниже: https://formspree.io/f/ВАШ_ID
+        const FORMSPREE_URL = 'https://formspree.io/f/YOUR_FORM_ID';
+
+        form.action = FORMSPREE_URL;
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const submitButton = form.querySelector('button');
+            const originalText = submitButton.textContent;
+            submitButton.textContent = 'Отправка...';
+            submitButton.disabled = true;
+            
+            const formData = new FormData(form);
+            
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    messageDiv.className = 'form-message success';
+                    messageDiv.textContent = '✅ Спасибо! Мы свяжемся с вами, когда начнётся бета-тест.';
+                    form.reset();
+                } else {
+                    throw new Error('Ошибка отправки');
+                }
+            } catch (error) {
+                messageDiv.className = 'form-message error';
+                messageDiv.textContent = '❌ Произошла ошибка. Пожалуйста, попробуйте позже или напишите нам напрямую.';
+            } finally {
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+                
+                // Скрыть сообщение через 5 секунд
+                setTimeout(() => {
+                    messageDiv.className = 'form-message';
+                }, 5000);
+            }
+        });
+    </script>
 </body>
 </html>
