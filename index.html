@@ -24,7 +24,6 @@
             padding: 0 20px;
         }
 
-        /* Header */
         .header {
             background: rgba(255,255,255,0.95);
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -74,7 +73,6 @@
             color: #667eea;
         }
 
-        /* Language Switcher */
         .lang-switcher {
             display: flex;
             gap: 8px;
@@ -102,7 +100,6 @@
             color: white;
         }
 
-        /* Hero Section */
         .hero {
             padding: 150px 0 100px;
             text-align: center;
@@ -140,7 +137,6 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
 
-        /* Features */
         .features {
             background: white;
             padding: 80px 0;
@@ -183,7 +179,6 @@
             color: #667eea;
         }
 
-        /* How it works */
         .how-it-works {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -214,7 +209,6 @@
             margin: 0 auto 20px;
         }
 
-        /* CTA Section */
         .cta-section {
             background: white;
             padding: 80px 0;
@@ -232,7 +226,6 @@
             color: #666;
         }
 
-        /* Beta Form Styles */
         .beta-form {
             max-width: 500px;
             margin: 30px auto 0;
@@ -293,7 +286,6 @@
             border: 1px solid #f5c6cb;
         }
 
-        /* Footer */
         .footer {
             background: #2d3748;
             color: white;
@@ -301,7 +293,6 @@
             text-align: center;
         }
 
-        /* Animations */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -313,7 +304,6 @@
             }
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 32px;
@@ -349,13 +339,13 @@
                 <div class="logo">GoWords</div>
                 <div class="nav-right">
                     <div class="nav-links">
-                        <a href="#features" data-key="navFeatures">Возможности</a>
-                        <a href="#how-it-works" data-key="navHowItWorks">Как работает</a>
-                        <a href="#beta" data-key="navBeta">Бета-тест</a>
+                        <a href="#features" data-key="navFeatures">Features</a>
+                        <a href="#how-it-works" data-key="navHowItWorks">How it works</a>
+                        <a href="#beta" data-key="navBeta">Beta</a>
                     </div>
                     <div class="lang-switcher">
-                        <button class="lang-btn" data-lang="en">EN</button>
-                        <button class="lang-btn active" data-lang="ru">RU</button>
+                        <button class="lang-btn active" data-lang="en">EN</button>
+                        <button class="lang-btn" data-lang="ru">RU</button>
                         <button class="lang-btn" data-lang="sr">SR</button>
                     </div>
                 </div>
@@ -366,30 +356,30 @@
     <main>
         <section class="hero">
             <div class="container">
-                <h1 data-key="heroTitle">Учите языки с GoWords</h1>
-                <p data-key="heroSubtitle">Эффективный метод обучения через карточки с интервальными повторениями</p>
-                <a href="#beta" class="cta-button" data-key="heroCta">Записаться в бета-тест →</a>
+                <h1 data-key="heroTitle">Learn languages with GoWords</h1>
+                <p data-key="heroSubtitle">Effective flashcard learning with spaced repetition system</p>
+                <a href="#beta" class="cta-button" data-key="heroCta">Join beta test →</a>
             </div>
         </section>
 
         <section id="features" class="features">
             <div class="container">
-                <h2 class="section-title" data-key="featuresTitle">Почему GoWords?</h2>
+                <h2 class="section-title" data-key="featuresTitle">Why GoWords?</h2>
                 <div class="features-grid">
                     <div class="feature-card">
                         <div class="feature-icon">📱</div>
-                        <h3 data-key="feature1Title">Удобный интерфейс</h3>
-                        <p data-key="feature1Desc">Интуитивно понятное приложение, которое делает обучение приятным и эффективным</p>
+                        <h3 data-key="feature1Title">Clean Interface</h3>
+                        <p data-key="feature1Desc">Intuitive app that makes learning enjoyable and effective</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">🔄</div>
-                        <h3 data-key="feature2Title">Интервальные повторения</h3>
-                        <p data-key="feature2Desc">Научно обоснованный метод для долгосрочного запоминания слов</p>
+                        <h3 data-key="feature2Title">Spaced Repetition</h3>
+                        <p data-key="feature2Desc">Scientifically proven method for long-term vocabulary retention</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">🎯</div>
-                        <h3 data-key="feature3Title">Персональный прогресс</h3>
-                        <p data-key="feature3Desc">Отслеживайте свой прогресс и фокусируйтесь на словах, которые нужно повторить</p>
+                        <h3 data-key="feature3Title">Personal Progress</h3>
+                        <p data-key="feature3Desc">Track your progress and focus on words that need review</p>
                     </div>
                 </div>
             </div>
@@ -397,27 +387,27 @@
 
         <section id="how-it-works" class="how-it-works">
             <div class="container">
-                <h2 class="section-title" style="color: white;" data-key="howItWorksTitle">Как это работает</h2>
+                <h2 class="section-title" style="color: white;" data-key="howItWorksTitle">How it works</h2>
                 <div class="steps">
                     <div class="step">
                         <div class="step-number">1</div>
-                        <h3 data-key="step1Title">Выберите тему</h3>
-                        <p data-key="step1Desc">Выберите интересующую тему из списка: путешествия, еда, бизнес и другие</p>
+                        <h3 data-key="step1Title">Choose a topic</h3>
+                        <p data-key="step1Desc">Pick a topic from the list: travel, food, business, and more</p>
                     </div>
                     <div class="step">
                         <div class="step-number">2</div>
-                        <h3 data-key="step2Title">Изучайте колоду</h3>
-                        <p data-key="step2Desc">Получите готовую колоду слов по выбранной теме и начните заниматься</p>
+                        <h3 data-key="step2Title">Study the deck</h3>
+                        <p data-key="step2Desc">Get a ready-made deck of words for your chosen topic</p>
                     </div>
                     <div class="step">
                         <div class="step-number">3</div>
-                        <h3 data-key="step3Title">Переворачивайте карточки</h3>
-                        <p data-key="step3Desc">Пытайтесь вспомнить перевод, затем проверяйте себя</p>
+                        <h3 data-key="step3Title">Flip cards</h3>
+                        <p data-key="step3Desc">Try to recall the translation, then check yourself</p>
                     </div>
                     <div class="step">
                         <div class="step-number">4</div>
-                        <h3 data-key="step4Title">Повторяйте регулярно</h3>
-                        <p data-key="step4Desc">Алгоритм подскажет, когда повторять каждое слово</p>
+                        <h3 data-key="step4Title">Review regularly</h3>
+                        <p data-key="step4Desc">The algorithm tells you when to review each word</p>
                     </div>
                 </div>
             </div>
@@ -425,43 +415,37 @@
 
         <section id="beta" class="cta-section">
             <div class="container">
-                <h2 data-key="betaTitle">Станьте бета-тестером</h2>
-                <p data-key="betaSubtitle">Приложение скоро запустится. Оставьте email, чтобы получить приглашение первыми</p>
+                <h2 data-key="betaTitle">Become a beta tester</h2>
+                <p data-key="betaSubtitle">The app is launching soon. Leave your email to get an invitation first</p>
                 
                 <form id="betaForm" class="beta-form" action="https://formspree.io/f/xojpkryy" method="POST">
-                    <input type="email" name="email" id="emailInput" placeholder="Ваш email" required>
-                    <input type="hidden" name="_subject" value="Новая заявка на бета-тест GoWords">
+                    <input type="email" name="email" id="emailInput" placeholder="Your email" required>
+                    <input type="hidden" name="_subject" value="New beta test request GoWords">
                     <input type="hidden" name="_replyto" value="">
-                    <button type="submit" id="submitBtn" data-key="betaButton">Записаться в бета-тест</button>
+                    <button type="submit" id="submitBtn" data-key="betaButton">Join beta test</button>
                 </form>
                 <div id="formMessage" class="form-message"></div>
-                <p style="margin-top: 20px; font-size: 14px; color: #999;" data-key="betaPrivacy">Мы не спамим и не передаём данные третьим лицам</p>
+                <p style="margin-top: 20px; font-size: 14px; color: #999;" data-key="betaPrivacy">No spam, we don't share your data</p>
             </div>
         </section>
     </main>
 
     <footer class="footer">
         <div class="container">
-            <p data-key="footerCopyright">© 2026 Mornar Labs. Все права защищены.</p>
-            <p style="margin-top: 10px; opacity: 0.8;" data-key="footerTagline">GoWords - учите языки с удовольствием</p>
+            <p data-key="footerCopyright">© 2026 Mornar Labs. All rights reserved.</p>
+            <p style="margin-top: 10px; opacity: 0.8;" data-key="footerTagline">GoWords - learn languages with joy</p>
         </div>
     </footer>
 
     <script>
-        // ============ ПЕРЕВОДЫ ============
         const translations = {
             en: {
-                // Navigation
                 navFeatures: "Features",
                 navHowItWorks: "How it works",
                 navBeta: "Beta",
-                
-                // Hero
                 heroTitle: "Learn languages with GoWords",
                 heroSubtitle: "Effective flashcard learning with spaced repetition system",
                 heroCta: "Join beta test →",
-                
-                // Features section
                 featuresTitle: "Why GoWords?",
                 feature1Title: "Clean Interface",
                 feature1Desc: "Intuitive app that makes learning enjoyable and effective",
@@ -469,8 +453,6 @@
                 feature2Desc: "Scientifically proven method for long-term vocabulary retention",
                 feature3Title: "Personal Progress",
                 feature3Desc: "Track your progress and focus on words that need review",
-                
-                // How it works section
                 howItWorksTitle: "How it works",
                 step1Title: "Choose a topic",
                 step1Desc: "Pick a topic from the list: travel, food, business, and more",
@@ -480,18 +462,12 @@
                 step3Desc: "Try to recall the translation, then check yourself",
                 step4Title: "Review regularly",
                 step4Desc: "The algorithm tells you when to review each word",
-                
-                // Beta section
                 betaTitle: "Become a beta tester",
                 betaSubtitle: "The app is launching soon. Leave your email to get an invitation first",
                 betaButton: "Join beta test",
                 betaPrivacy: "No spam, we don't share your data",
-                
-                // Footer
                 footerCopyright: "© 2026 Mornar Labs. All rights reserved.",
                 footerTagline: "GoWords - learn languages with joy",
-                
-                // Form messages
                 formSuccess: "✅ Thank you! We'll contact you when the beta starts.",
                 formError: "❌ Something went wrong. Please try again later.",
                 emailPlaceholder: "Your email"
@@ -564,16 +540,12 @@
             }
         };
 
-        // ============ ФУНКЦИЯ СМЕНЫ ЯЗЫКА ============
-        let currentLang = 'en'; // язык по умолчанию
+        let currentLang = 'en';
 
         function setLanguage(lang) {
             currentLang = lang;
-            
-            // Меняем атрибут lang у html
             document.documentElement.lang = lang === 'en' ? 'en' : (lang === 'sr' ? 'sr' : 'ru');
             
-            // Меняем заголовок страницы
             if (lang === 'en') {
                 document.title = 'GoWords - Learn languages with flashcards';
             } else if (lang === 'sr') {
@@ -582,7 +554,6 @@
                 document.title = 'GoWords - Учите языки с карточками';
             }
             
-            // Обновляем все элементы с data-key
             document.querySelectorAll('[data-key]').forEach(element => {
                 const key = element.getAttribute('data-key');
                 if (translations[lang][key]) {
@@ -594,13 +565,11 @@
                 }
             });
             
-            // Обновляем placeholder для email поля отдельно
             const emailInput = document.getElementById('emailInput');
             if (emailInput) {
                 emailInput.placeholder = translations[lang].emailPlaceholder;
             }
             
-            // Обновляем активный класс у кнопок
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 if (btn.getAttribute('data-lang') === lang) {
                     btn.classList.add('active');
@@ -610,7 +579,6 @@
             });
         }
 
-        // ============ ОБРАБОТЧИКИ КНОПОК ЯЗЫКА ============
         document.querySelectorAll('.lang-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 const lang = btn.getAttribute('data-lang');
@@ -618,7 +586,6 @@
             });
         });
 
-        // ============ ФОРМА ============
         const form = document.getElementById('betaForm');
         const messageDiv = document.getElementById('formMessage');
         const FORMSPREE_URL = 'https://formspree.io/f/xojpkryy';
@@ -649,7 +616,7 @@
                     messageDiv.textContent = translations[currentLang].formSuccess;
                     form.reset();
                 } else {
-                    throw new Error('Ошибка отправки');
+                    throw new Error('Error');
                 }
             } catch (error) {
                 messageDiv.className = 'form-message error';
@@ -664,8 +631,7 @@
             }
         });
 
-        // Инициализация с русским языком (по умолчанию)
-        setLanguage('ru');
+        setLanguage('en');
     </script>
 </body>
 </html>
