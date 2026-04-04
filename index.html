@@ -377,7 +377,7 @@
                 <h2>Станьте бета-тестером</h2>
                 <p>Приложение скоро запустится. Оставьте email, чтобы получить приглашение первыми</p>
                 
-                <!-- РАБОЧАЯ ФОРМА ДЛЯ СБОРА EMAIL -->
+                <!-- ФОРМА ДЛЯ СБОРА EMAIL -->
                 <form id="betaForm" class="beta-form" action="https://formspree.io/f/xojpkryy" method="POST">
                     <input type="email" name="email" placeholder="Ваш email" required>
                     <input type="hidden" name="_subject" value="Новая заявка на бета-тест GoWords">
@@ -398,15 +398,8 @@
     </footer>
 
     <script>
-        // Скрипт для отправки формы без перезагрузки страницы (AJAX)
         const form = document.getElementById('betaForm');
         const messageDiv = document.getElementById('formMessage');
-
-        // ЗАМЕНИТЕ ЭТУ ССЫЛКУ НА ВАШУ ОТ FORMSPREE
-        // 1. Перейдите на https://formspree.io/
-        // 2. Зарегистрируйтесь
-        // 3. Создайте новый проект и получите ID формы (вида xeqkrnje)
-        // 4. Вставьте ссылку ниже: https://formspree.io/f/ВАШ_ID
         const FORMSPREE_URL = 'https://formspree.io/f/YOUR_FORM_ID';
 
         form.action = FORMSPREE_URL;
