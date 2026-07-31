@@ -302,6 +302,7 @@
 
                 <div class="deletion-form">
                     <form id="deletionForm">
+                        <input type="hidden" name="_subject" value="[ACCOUNT DELETION REQUEST] GoWords App">
                         <div class="form-group">
                             <label for="userEmail" data-key="formEmailLabel">Account Email Address *</label>
                             <input type="email" id="userEmail" name="email" required placeholder="your.email@example.com">
@@ -461,7 +462,6 @@
             submitButton.disabled = true;
             
             const formData = new FormData(form);
-            formData.append('_subject', 'GoWords Account Deletion Request');
             
             try {
                 const response = await fetch(form.action, {
