@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoWords - Account Deletion / Удаление аккаунта</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .lang-switcher {
+            display: flex;
+            gap: 8px;
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            padding: 6px 12px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 20px;
+            transition: all 0.3s;
+            color: #666;
+            font-family: inherit;
+        }
+
+        .lang-btn:hover {
+            background: #f0f0f0;
+        }
+
+        .lang-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .content {
+            padding: 130px 0 60px;
+            flex: 1;
+        }
+
+        .card {
+            background: white;
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #1a1a2e;
+        }
+
+        h2 {
+            font-size: 22px;
+            margin: 30px 0 15px;
+            color: #2d3748;
+            border-bottom: 2px solid #edf2f7;
+            padding-bottom: 8px;
+        }
+
+        p, li {
+            font-size: 16px;
+            color: #4a5568;
+            margin-bottom: 12px;
+        }
+
+        ul, ol {
+            padding-left: 24px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .alert-box {
+            background: #fff5f5;
+            border-left: 4px solid #e53e3e;
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .alert-box p {
+            color: #c53030;
+            margin-bottom: 0;
+            font-weight: 500;
+        }
+
+        .info-box {
+            background: #ebf8ff;
+            border-left: 4px solid #3182ce;
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .info-box p {
+            color: #2b6cb0;
+            margin-bottom: 0;
+        }
+
+        .deletion-form {
+            margin-top: 25px;
+            background: #f7fafc;
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #2d3748;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #cbd5e0;
+            border-radius: 10px;
+            font-size: 15px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15);
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #e53e3e 0%, #c53030 100%);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(229, 62, 62, 0.3);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .form-message {
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 8px;
+            display: none;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .form-message.success {
+            display: block;
+            background: #c6f6d5;
+            color: #22543d;
+        }
+
+        .form-message.error {
+            display: block;
+            background: #fed7d7;
+            color: #9b2c2c;
+        }
+
+        .footer {
+            background: rgba(0, 0, 0, 0.2);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .footer p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            .card {
+                padding: 25px;
+            }
+            .hero h1 {
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="landing_index.html" class="logo">GoWords</a>
+                <div class="nav-right">
+                    <div class="lang-switcher">
+                        <button class="lang-btn active" data-lang="en">EN</button>
+                        <button class="lang-btn" data-lang="ru">RU</button>
+                        <button class="lang-btn" data-lang="sr">SR</button>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="content">
+        <div class="container">
+            <div class="card">
+                <h1 data-key="pageTitle">Account Deletion & Data Removal</h1>
+                <p data-key="introText">At GoWords, we respect your privacy and provide transparent ways to delete your account and associated personal data.</p>
+
+                <div class="alert-box">
+                    <p data-key="warningText">⚠️ Warning: Account deletion is permanent and irreversible. All your word learning progress, saved topics, achievements, and settings will be permanently erased.</p>
+                </div>
+
+                <h2 data-key="method1Title">Option 1: Delete Account via GoWords Mobile App (Recommended)</h2>
+                <p data-key="method1Desc">You can delete your account directly inside the app at any time:</p>
+                <ol>
+                    <li data-key="method1Step1">Open the <strong>GoWords</strong> app on your device.</li>
+                    <li data-key="method1Step2">Navigate to the <strong>Profile</strong> tab in the navigation menu.</li>
+                    <li data-key="method1Step3">Scroll down to the bottom of the Profile page.</li>
+                    <li data-key="method1Step4">Tap the red <strong>Delete Account</strong> button.</li>
+                    <li data-key="method1Step5">Confirm your decision in the popup modal.</li>
+                </ol>
+
+                <h2 data-key="method2Title">Option 2: Web Deletion Request Form (Without App)</h2>
+                <p data-key="method2Desc">If you no longer have access to the GoWords app or have uninstalled it, you can submit an account deletion request using the form below:</p>
+
+                <div class="deletion-form">
+                    <form id="deletionForm">
+                        <div class="form-group">
+                            <label for="userEmail" data-key="formEmailLabel">Account Email Address *</label>
+                            <input type="email" id="userEmail" name="email" required placeholder="your.email@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="usernameInput" data-key="formUsernameLabel">User ID / Nickname (Optional)</label>
+                            <input type="text" id="usernameInput" name="username" placeholder="e.g. JohnDoe">
+                        </div>
+                        <div class="form-group">
+                            <label for="reasonInput" data-key="formReasonLabel">Reason for Deletion (Optional)</label>
+                            <textarea id="reasonInput" name="reason" rows="3" placeholder="Tell us why you are leaving..."></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn" data-key="formSubmitBtn">Submit Deletion Request</button>
+                    </form>
+                    <div id="formMessage" class="form-message"></div>
+                </div>
+
+                <h2 data-key="dataPolicyTitle">Data Retention and Deletion Policy</h2>
+                <div class="info-box">
+                    <p data-key="dataPolicyText"><strong>What data is deleted:</strong> When an account deletion request is processed, your user profile document, vocabulary learning profiles, custom topics, progress buckets, and authentication records are permanently removed from Firebase Firestore and Authentication. No personal data is retained after deletion.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p data-key="footerCopyright">© 2026 Mornar Labs. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const translations = {
+            en: {
+                pageTitle: "Account Deletion & Data Removal",
+                introText: "At GoWords, we respect your privacy and provide transparent ways to delete your account and associated personal data.",
+                warningText: "⚠️ Warning: Account deletion is permanent and irreversible. All your word learning progress, saved topics, achievements, and settings will be permanently erased.",
+                method1Title: "Option 1: Delete Account via GoWords Mobile App (Recommended)",
+                method1Desc: "You can delete your account directly inside the app at any time:",
+                method1Step1: "Open the GoWords app on your device.",
+                method1Step2: "Navigate to the Profile tab in the navigation menu.",
+                method1Step3: "Scroll down to the bottom of the Profile page.",
+                method1Step4: "Tap the red Delete Account button.",
+                method1Step5: "Confirm your decision in the popup modal.",
+                method2Title: "Option 2: Web Deletion Request Form (Without App)",
+                method2Desc: "If you no longer have access to the GoWords app or have uninstalled it, you can submit an account deletion request using the form below:",
+                formEmailLabel: "Account Email Address *",
+                formUsernameLabel: "User ID / Nickname (Optional)",
+                formReasonLabel: "Reason for Deletion (Optional)",
+                formSubmitBtn: "Submit Deletion Request",
+                dataPolicyTitle: "Data Retention and Deletion Policy",
+                dataPolicyText: "What data is deleted: When an account deletion request is processed, your user profile document, vocabulary learning profiles, custom topics, progress buckets, and authentication records are permanently removed from Firebase Firestore and Authentication. No personal data is retained after deletion.",
+                footerCopyright: "© 2026 Mornar Labs. All rights reserved.",
+                formSuccess: "✅ Your deletion request has been submitted successfully. We will process it and permanently delete your data within 30 days.",
+                formError: "❌ Failed to submit request. Please try again later or contact support.",
+                sendingText: "Submitting request..."
+            },
+            ru: {
+                pageTitle: "Удаление аккаунта и данных",
+                introText: "В GoWords мы уважаем вашу конфиденциальность и предоставляем прозрачные способы удаления аккаунта и связанных персональных данных.",
+                warningText: "⚠️ Внимание: Удаление аккаунта необратимо. Весь ваш прогресс изучения слов, сохранённые темы, достижения и настройки будут безвозвратно удалены.",
+                method1Title: "Способ 1: Удаление аккаунта в приложении GoWords (Рекомендуемый)",
+                method1Desc: "Вы можете удалить свой аккаунт напрямую в мобильном приложении в любое время:",
+                method1Step1: "Откройте приложение GoWords на вашем устройстве.",
+                method1Step2: "Перейдите на вкладку «Профиль» в меню.",
+                method1Step3: "Прокрутите страницу Профиля в самый низ.",
+                method1Step4: "Нажмите на красную кнопку «Удалить аккаунт».",
+                method1Step5: "Подтвердите решение в появившемся модальном окне.",
+                method2Title: "Способ 2: Запрос на удаление через веб-форму (без приложения)",
+                method2Desc: "Если у вас нет доступа к приложению GoWords или вы его удалили, вы можете отправить запрос на удаление аккаунта с помощью формы ниже:",
+                formEmailLabel: "Email аккаунта *",
+                formUsernameLabel: "ID пользователя / Никнейм (Опционально)",
+                formReasonLabel: "Причина удаления (Опционально)",
+                formSubmitBtn: "Отправить запрос на удаление",
+                dataPolicyTitle: "Политика хранения и удаления данных",
+                dataPolicyText: "Какие данные удаляются: При обработке запроса на удаление аккаунта ваш профиль, языковые профили изучения, персональные темы, прогресс по карточкам и учетная запись аутентификации полностью и безвозвратно удаляются из Firebase Firestore и Firebase Auth. Никакие персональные данные не сохраняются.",
+                footerCopyright: "© 2026 Mornar Labs. Все права защищены.",
+                formSuccess: "✅ Ваш запрос на удаление успешно отправлен. Мы обработаем его и окончательно удалим данные в течение 30 дней.",
+                formError: "❌ Ошибка отправки запроса. Пожалуйста, попробуйте позже.",
+                sendingText: "Отправка запроса..."
+            },
+            sr: {
+                pageTitle: "Brisanje naloga i podataka",
+                introText: "U GoWords poštujemo vašu privatnost i pružamo transparentne načine za brisanje vašeg naloga i povezanih ličnih podataka.",
+                warningText: "⚠️ Upozorenje: Brisanje naloga je trajno i nepovratno. Sav vaš napredak u učenju reči, sačuvane teme, dostignuća i podešavanja biće trajno izbrisani.",
+                method1Title: "Opcija 1: Izbrišite nalog putem aplikacije GoWords (Preporučeno)",
+                method1Desc: "Možete izbrisati svoj nalog direktno u aplikaciji u bilo kom trenutku:",
+                method1Step1: "Otvorite aplikaciju GoWords na svom uređaju.",
+                method1Step2: "Idite na karticu Profil u navigacionom meniju.",
+                method1Step3: "Skrolujte do dna stranice Profila.",
+                method1Step4: "Dodirnite crveno dugme Izbriši nalog.",
+                method1Step5: "Potvrdite svoju odluku u skočnom prozoru.",
+                method2Title: "Opcija 2: Veb obrazac za zahtev za brisanje (Bez aplikacije)",
+                method2Desc: "Ako više nemate pristup aplikaciji GoWords ili ste je deinstalirali, možete poslati zahtev za brisanje naloga pomoću obrasca ispod:",
+                formEmailLabel: "Email adresa naloga *",
+                formUsernameLabel: "Korisnički ID / Nadimak (Opciono)",
+                formReasonLabel: "Razlog za brisanje (Opciono)",
+                formSubmitBtn: "Pošaljite zahtev za brisanje",
+                dataPolicyTitle: "Politika zadržavanja i brisanja podataka",
+                dataPolicyText: "Koji podaci se brišu: Kada se obradi zahtev za brisanje naloga, vaš profil korisnika, profili učenja reči, prilagođene teme i evidencija o autentičnosti se trajno uklanjaju iz baze podataka Firebase Firestore i Authentication.",
+                footerCopyright: "© 2026 Mornar Labs. Sva prava zadržana.",
+                formSuccess: "✅ Vaš zahtev za brisanje je uspešno poslat. Obradićemo ga i trajno izbrisati vaše podatke u roku od 30 dana.",
+                formError: "❌ Greška pri slanju zahteva. Pokušajte ponovo kasnije.",
+                sendingText: "Slanje zahteva..."
+            }
+        };
+
+        let currentLang = 'en';
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.documentElement.lang = lang;
+            
+            if (lang === 'en') {
+                document.title = 'GoWords - Account Deletion / Data Removal';
+            } else if (lang === 'sr') {
+                document.title = 'GoWords - Brisanje naloga i podataka';
+            } else {
+                document.title = 'GoWords - Удаление аккаунта и данных';
+            }
+            
+            document.querySelectorAll('[data-key]').forEach(element => {
+                const key = element.getAttribute('data-key');
+                if (translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                if (btn.getAttribute('data-lang') === lang) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+        }
+
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const lang = btn.getAttribute('data-lang');
+                setLanguage(lang);
+            });
+        });
+
+        const form = document.getElementById('deletionForm');
+        const messageDiv = document.getElementById('formMessage');
+        const FORMSPREE_URL = 'https://formspree.io/f/xojpkryy';
+
+        form.action = FORMSPREE_URL;
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const submitButton = form.querySelector('button');
+            const originalText = submitButton.textContent;
+            submitButton.textContent = translations[currentLang].sendingText;
+            submitButton.disabled = true;
+            
+            const formData = new FormData(form);
+            formData.append('_subject', 'GoWords Account Deletion Request');
+            
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    messageDiv.className = 'form-message success';
+                    messageDiv.textContent = translations[currentLang].formSuccess;
+                    form.reset();
+                } else {
+                    throw new Error('Error');
+                }
+            } catch (error) {
+                messageDiv.className = 'form-message error';
+                messageDiv.textContent = translations[currentLang].formError;
+            } finally {
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+            }
+        });
+
+        setLanguage('en');
+    </script>
+</body>
+</html>
